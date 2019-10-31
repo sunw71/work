@@ -1,2 +1,27 @@
 Tensorflow 、显卡驱动、cuda、cuDNN版本号要对应好。
 可参照tensorflow 官网,1.14 cuda10.1安装出现问题
+
+安装cuda10后测试成功，但运行其他代码出现显存不足错误，百度如下解决方案后解决
+
+本文链接：https://blog.csdn.net/Jdk_yxs/article/details/84061812
+
+代码出现tensorflow.python.framework.errors_impl.InternalError，from device: CUDA_ERROR_OUT_OF_MEMORY
+
+此文为解决机器学习中使用tensorflow，在运行代码出现上述报错情况
+
+1.先运行nvidia-smi 检查GPU运行情况，若内存够用进入2
+
+2.代码应作已下修改
+
+    import tensorflow as tf  
+    import os  
+    os.environ["CUDA_VISIBLE_DEVICES"] = '0' #use GPU with ID=0  
+    config = tf.ConfigProto()  
+    config.gpu_options.per_process_gpu_memory_fraction = 0.5 # maximun alloc gpu50% of MEM  
+    config.gpu_options.allow_growth = True #allocate dynamically  
+    sess = tf.Session(config = config)
+
+以上代码是让GPU运行进行动态分配内存。。
+————————————————
+版权声明：本文为CSDN博主「大可的杨先森」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/Jdk_yxs/article/details/84061812
