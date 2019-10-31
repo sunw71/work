@@ -1,0 +1,2 @@
+Tensorflow 、显卡驱动、cuda、cuDNN版本号要对应好。
+可参照tensorflow 官网,1.14 cuda10.1安装出现问题
