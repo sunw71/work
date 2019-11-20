@@ -25,3 +25,16 @@ Tensorflow 、显卡驱动、cuda、cuDNN版本号要对应好。
 ————————————————
 版权声明：本文为CSDN博主「大可的杨先森」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
 原文链接：https://blog.csdn.net/Jdk_yxs/article/details/84061812
+
+在跑深度学习的时候，有时候由于关闭程序的不规范，导致显存一直被占用，以致于下一次跑网络的时候会出现现存不足的情况。在这种情况下可以使用如下指令：
+
+sudo kill -9 PID
+
+    1
+
+    PID这里应该由具体你想关闭哪个占用显存的程序的PID号代替，输入指令：
+
+watch -n 1 nvidia-smi
+————————————————
+版权声明：本文为CSDN博主「熊彬程的博客」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/xbcreal/article/details/73733446
